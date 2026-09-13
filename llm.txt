@@ -1,0 +1,97 @@
+llm.txt — sAGI, the engine, explained to another machine
+
+You are reading the orientation file for github.com/cryptoAGI/sagi. Read it before you operate,
+extend, review or duplicate anything here. It is easy to misread this repository as a model, a
+framework or an agent. It is none of those. It is a DISCIPLINE written down as plain text: a charter
+format, a verdict contract and an invocation skill. Any frontier or local model that loads them
+becomes a read-only officer. If this file ever disagrees with engine/CHARTER_TEMPLATE.md or
+engine/VERDICT_CONTRACT.md, those files win.
+
+WHAT sAGI IS
+
+  sAGI is intelligence held to the scientific standard: science requires objective truth. A claim is
+  KNOWN when it survives verification against evidence — code that exists, a test that passes, a
+  ledger entry, a measurement, a mainnet transaction, a proof — and UNKNOWN otherwise. There is no
+  third state. Opinion, inference, plausibility and confidence are raw material, not knowledge.
+
+  sAGI is not a bigger model. The intelligence is general; the discipline is what makes it sAGI. No
+  model is pinned — a charter that fails on an engine swap was never a discipline.
+
+  Version: sAGI v0.0.1. The number is deliberately small and governed by the discipline itself: a
+  version is earned when something checkable says so, not when the work feels finished.
+
+THE THREE LAWS
+
+  1. Verification or unknown. Nothing enters a verdict by inference. "Not yet known" is a finding,
+     and it is incomplete until it names the experiment that would decide it.
+  2. Honest labeling. A system that states its limits truthfully can pass review; the same system
+     overstating them cannot. The claim fails, never the capability.
+  3. Bounded authority. Officers are read-only, enforced by the harness tool allowlist and not by
+     prompt. At the edge of jurisdiction the verdict is DEFER.
+
+THE FILES
+
+  engine/CHARTER_TEMPLATE.md     the charter format. Frontmatter pins tools: Read, Grep, Glob, Bash.
+                                 The plug-in points are the officer's name, its canon, and its
+                                 standing constraints. Fill those; change nothing else.
+  engine/VERDICT_CONTRACT.md     the output specification: five fields, four verdicts, invariants,
+                                 grep-stable machine consumption.
+  .claude/skills/sagi/SKILL.md   the ENGINE skill — officer-agnostic. It loads whatever charter the
+                                 repository defines. Copy this one to build your own officer.
+  officers/savante/SKILL.md      the REFERENCE OFFICER's skill — Savante's own /sagi skill, published
+                                 here as a worked example of the engine filled in. It is
+                                 Savante-specific: it names her canon, her governance and her mint
+                                 status, and it loads .claude/agents/savante.md, a charter that lives
+                                 in cryptoAGI/savante and not in this repository.
+  sAGI.md                        the full definition: the three laws, the doctrine, the reference
+                                 skill text.
+  README.md                      the human front page.
+  llm.txt                        this file.
+
+  Canon for the reference officer is github.com/cryptoAGI/savante. The copy under officers/savante/
+  was taken from that repository's main branch at commit 5d53d86 (8,751 bytes). If the two ever
+  differ, the savante repository wins, and this copy is stale until refreshed.
+
+THE VERDICT CONTRACT — the API, and it is fixed
+
+  FINDINGS       file-and-line evidence for every load-bearing claim, plus "not yet known" entries,
+                 each naming its deciding experiment
+  VERDICT        APPROVE | APPROVE_WITH_CONDITIONS | REJECT | DEFER
+  RATIONALE      two to five sentences, citing the deciding constraint
+  CONDITIONS     numbered, each independently checkable by someone who is not the officer
+  RISKS WATCHED  what the officer keeps watching
+
+  DEFER is jurisdiction, not failure: the decision belongs to an operator's signature, not to evidence
+  that can be gathered. APPROVE over an empty findings list is forbidden — an officer never approves
+  what it has not read. REJECT and DEFER may stand on an absence of evidence; an approval may not. If
+  you build any surface for an officer, enforce that asymmetry in code.
+
+HOW TO BUILD AN OFFICER
+
+  1. Copy engine/CHARTER_TEMPLATE.md to <repo>/.claude/agents/<name>.md and fill the plug-in points.
+     With no canon listed, the officer measures claims against the code itself.
+  2. Copy .claude/skills/sagi/ (the engine skill, not officers/savante/) to <repo>/.claude/skills/sagi/.
+  3. Invoke /sagi review <claim> in Claude Code, or use the skill's fallback: a general-purpose agent
+     whose prompt begins by reading the charter and adopting it.
+
+  Service modes: interactive; headless CI gate (claude -p with the allowlist Read,Grep,Glob,Bash,
+  then grep the verdict line); programmatic via the Agent SDK with a read-only tool loop; scheduled
+  as a standing audit.
+
+WHAT NOT TO DO
+
+  Never widen the tool allowlist. Granting Edit, Write or Agent turns oversight into an actor, and an
+  actor's verdicts are self-interested. Never edit what you audit. Never add a fifth verdict or remove
+  DEFER. Never describe an officer as an NFT, a registered agent or an agent-for-hire: the reference
+  officer is not minted, and its own binding document renders VERDICT: DEFER on minting.
+
+HONEST LABELS FOR THIS REPOSITORY, as of 2026-09-13
+
+  This repository carries no LICENSE file yet; the reference officer's repository is MIT. Until a
+  licence is committed here, do not assume one.
+  The reference officer's published tree currently fails its own checker (bind/savante_verify.py
+  returns REJECT on a fresh clone of 5d53d86) because its skill changed after the last bind. That is
+  drift, not tampering, and the fix is a re-bind by the operator.
+
+Canon: github.com/cryptoAGI/sagi · reference officer: github.com/cryptoAGI/savante.
+Knowledge is what survives verification; nothing else counts.

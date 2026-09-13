@@ -41,7 +41,17 @@ engine/VERDICT_CONTRACT.md     the output specification — verdict semantics,
                                officer-agnostic (published)
 sAGI.md                        the full definition — three laws, doctrine,
                                reference skill text
+officers/savante/SKILL.md      the reference officer's own /sagi skill —
+                               Savante-specific, a worked example of the
+                               engine filled in (canon: cryptoAGI/savante)
+llm.txt                        orientation for machines — read first
 ```
+
+Copy the **engine** skill (`.claude/skills/sagi/`) to build your own officer.
+`officers/savante/SKILL.md` is published to show what a filled-in officer looks
+like; it loads `.claude/agents/savante.md`, which lives in
+[cryptoAGI/savante](https://github.com/cryptoAGI/savante), and that repository
+wins if the two copies ever differ.
 
 ## Build an officer
 
