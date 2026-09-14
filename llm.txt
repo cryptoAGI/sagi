@@ -87,11 +87,12 @@ WHAT NOT TO DO
 
 HONEST LABELS FOR THIS REPOSITORY, as of 2026-09-13
 
-  This repository carries no LICENSE file yet; the reference officer's repository is MIT. Until a
-  licence is committed here, do not assume one.
-  The reference officer's published tree currently fails its own checker (bind/savante_verify.py
-  returns REJECT on a fresh clone of 5d53d86) because its skill changed after the last bind. That is
-  drift, not tampering, and the fix is a re-bind by the operator.
+  This repository is MIT licensed — the same LICENSE text, byte for byte, as the reference officer's:
+  Copyright (c) 2026 cryptoAGI — Professor Codephreak.
+  The reference officer's published tree verifies: a fresh clone of cryptoAGI/savante at 3b5ddb5 makes
+  bind/savante_verify.py print VERDICT: APPROVE, exit 0. Earlier, at 5d53d86, it printed REJECT because
+  the skill changed after the last bind — drift, not tampering, closed by the re-bind in 3b5ddb5. That
+  APPROVE proves the binding of files to ledger, not who rendered any verdict, and nothing is on chain.
 
 Canon: github.com/cryptoAGI/sagi · reference officer: github.com/cryptoAGI/savante.
 Knowledge is what survives verification; nothing else counts.
