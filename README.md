@@ -5,10 +5,14 @@
 > *Knowledge is what survives verification; nothing else counts.*
 
 sAGI is not a model. It is a **discipline compiled into plain text** — a
-charter format, an invocation skill, and a fixed verdict contract — that
-turns any frontier or local model into a *chartered knower*: a read-only
-officer that verifies claims instead of opining on them, and reports
-*not yet known* (with the deciding experiment) instead of guessing.
+charter format, an invocation skill, a fixed verdict contract, and a facet
+bundle format — that turns any frontier or local model into a *chartered
+knower*: a read-only officer that verifies claims instead of opining on them,
+and reports *not yet known* (with the deciding experiment) instead of guessing.
+
+An officer is a set of files. The **facet bundle** says which files, what each
+one is for, and how a stranger checks that the set is the one the author
+committed to — without a network and without trusting the author.
 
 The reference officer built on this engine is
 **[Savante](https://github.com/cryptoAGI/savante)** — Chairman of the
@@ -37,6 +41,17 @@ engine/CHARTER_TEMPLATE.md     the charter format — fill the plug-in points
                                officer for any project
 engine/VERDICT_CONTRACT.md     the output specification — verdict semantics,
                                invariants, machine consumption
+engine/FACET_BUNDLE.md         what an officer is made of: the core facets,
+                               the three states (absent / null-with-reason /
+                               present), and the x- namespace rule that lets
+                               evolution add facets forever without collision
+engine/THOT_MANIFEST.md        how N facets become ONE content-addressed
+                               thing — thot: / CID / contentRoot from a single
+                               canonicalisation, the two roots, and lineage
+engine/FAICE_FORMAT.md         the faice/1 face-identity format, voaice's
+                               sibling — twelve ordered ratios, and why an
+                               unmeasured print is null rather than plausible
+engine/facet_registry.json     the registry itself, machine-readable
 .claude/skills/sagi/SKILL.md   the /sagi skill — the engine invocation,
                                officer-agnostic (published)
 sAGI.md                        the full definition — three laws, doctrine,
@@ -45,6 +60,7 @@ officers/savante/SKILL.md      the reference officer's own /sagi skill —
                                Savante-specific, a worked example of the
                                engine filled in (canon: cryptoAGI/savante)
 llm.txt                        orientation for machines — read first
+LICENSE                        MIT
 ```
 
 Copy the **engine** skill (`.claude/skills/sagi/`) to build your own officer.
@@ -52,6 +68,10 @@ Copy the **engine** skill (`.claude/skills/sagi/`) to build your own officer.
 like; it loads `.claude/agents/savante.md`, which lives in
 [cryptoAGI/savante](https://github.com/cryptoAGI/savante), and that repository
 wins if the two copies ever differ.
+
+The bundle documents are specifications, not an implementation. The reference
+implementation is Savante's `bind/savante_bind.py` (writes the manifest) and
+`bind/savante_verify.py` (recomputes every digest from raw bytes, offline).
 
 ## Build an officer
 

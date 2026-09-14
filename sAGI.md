@@ -98,7 +98,7 @@ discipline as a review.
 3. **Fallback** (savante agent type not registered in this session — it was
    created mid-session, or you are in a fresh checkout): launch a
    `general-purpose` agent whose prompt begins: "FIRST: Read
-   /home/hacker/mindX/.claude/agents/savante.md and adopt it as your operating
+   `.claude/agents/savante.md` (this repository) and adopt it as your operating
    charter — you ARE Savante for this task", followed by the review target.
 4. Have it verify, not infer: run the tests, run the build, read the git
    state, grep for the claimed capability. Actual results only.
