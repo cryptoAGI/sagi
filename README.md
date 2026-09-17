@@ -76,7 +76,7 @@ like; it loads `.claude/agents/savante.md`, which lives in
 wins if the two copies ever differ. The copy here is the canon's at `619c71a`
 (v0.0.5); its paths (`gfx/`, `PROOF.sha256`, `bind/`) are relative to the canon.
 Check it with `sha256sum officers/savante/SKILL.md`, which must print
-`4ddf8430c7a90a7eafbb6ac419dee34180645fa572e571103da28f1209c60735`, the value in
+`b8b9b62db9bac8286171a5766fe23f0512987872d2cefc9598036b7609daff30`, the value in
 the canon's `PROOF.sha256` and ledger.
 
 The bundle documents are specifications, not an implementation. The reference
