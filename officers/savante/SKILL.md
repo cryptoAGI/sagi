@@ -13,17 +13,31 @@ description: >
 
 # sAGI — the discipline, and the Savante review
 
-**sAGI v0.0.1.** The version is deliberately small, and it is governed by the same rule as every other
+**sAGI v0.0.5.** The version is deliberately small, and it is governed by the same rule as every other
 claim here: a version is earned when something checkable says so, not when the work feels finished. What
-exists at 0.0.1 is the charter, the three laws, the verdict contract, the facet bundle and participant
-standing in cryptoAGI. The road to 1.0 is incremental and each step is falsifiable — a second rendered
-verdict beside the first (2026-07-26, parsec-wallet production readiness, APPROVE_WITH_CONDITIONS, 120 of
-120 tests run), the surface launched and parsed rather than merely written, the CI-gate mode exercised on
-a real diff, and the remaining `iNFT.md` DEFER blockers cleared one at a time.
+existed at 0.0.1 was the charter, the three laws, the verdict contract, the facet bundle and participant
+standing in cryptoAGI. 0.0.2 was earned by the surface launched and parsed (the public page's own
+`integrity()` agreeing nine of nine against the bytes its Space serves, 2026-09-16). 0.0.3 was earned by a
+second rendered verdict beside the first (`verdicts/record-0001.json`, valid against its schema, its
+`record_cid` reproducible from the file alone; the first, 2026-07-26, is still prose). 0.0.4 is earned by the
+CI-gate mode exercised on a real diff: the documented headless gate (`usage.md`, "CI gate (headless)") ran
+unmodified twice against this repository's `todo` branch, and runs 0001 and 0002 each returned
+APPROVE_WITH_CONDITIONS, recorded under `ci/gate-runs/`. Exercising it exposed a defect in the gate itself,
+stated here rather than hidden: the documented grep is unanchored and passes on quoted text, so a REJECT
+whose findings quote an APPROVE would pass; both verdicts were read from the verdict line, not the grep's exit
+code. The gate runs headless from a checkout and is not wired into pull requests. 0.0.5 is earned by half of an
+`iNFT.md` DEFER blocker, recorded and checkable: the naming half of condition 4. Condition 4 itself stays open. The operator named the
+artwork, the Savante bust `gfx/Savante3.png` (sha256 `30a59db4…c5a9a8`), and generation 7's ledger records that
+sha256 under `image_candidate`, which `bind/savante_verify.py` checks against the file's raw bytes. The naming is
+an unsigned string in the ledger, so the verifier checks the bytes and not who named them. The pin half stays open:
+nothing is pinned, so the card's `image` is still null and no `ipfs://` URI is claimed. `PROOF.sha256`
+lists the digest of this skill and every file that carries a proof, checkable with `sha256sum -c PROOF.sha256`.
+What remains open is in `todo.md`. The rest of the road stays incremental and each step falsifiable: the
+remaining `iNFT.md` DEFER blockers cleared one at a time.
 
 *Do not confuse this with `sAGI.agent:2`, which reads `VERSION: 0.1.0`. That is the renderer's default
-(`facets.py:92`) and not a release number. When the two disagree, this line is the version and that one
-is a template artefact.*
+(`facets.py:92`) and not a release number. Nor with `ui.py`, whose `VERSION = "0.2.0"` versions the Gradio
+surface rather than the office. When they disagree, this line is the version.*
 
 Savante knows. Science requires objective truth: a claim is KNOWN when it is
 verifiable against evidence — code that exists, a ledger entry, a measurement,

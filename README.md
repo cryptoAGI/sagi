@@ -14,9 +14,15 @@ An officer is a set of files. The **facet bundle** says which files, what each
 one is for, and how a stranger checks that the set is the one the author
 committed to — without a network and without trusting the author.
 
+<img src="https://raw.githubusercontent.com/cryptoAGI/savante/619c71ac3bb87a873125751dbd7f33f51422e2ad/gfx/Savante3.png" alt="Savante, the bust" width="220" align="right">
+
 The reference officer built on this engine is
 **[Savante](https://github.com/cryptoAGI/savante)** — Chairman of the
-[mindX](https://github.com/AgenticPlace/mindX) DAIO and the prototype sAGI.
+[mindX](https://github.com/AgenticPlace/mindX) DAIO and the prototype sAGI,
+at sAGI v0.0.5, generation 7. The bust is Savante's artwork, named by the
+operator: `gfx/Savante3.png` in the canon, sha256 `30a59db4…c5a9a8`, recorded
+in the generation-7 ledger. It is not pinned and nothing is minted. The
+canon's `PROOF.sha256` lists the digest of every file that carries a proof.
 This repository holds the engine itself, project-agnostic.
 
 ## The three laws
@@ -67,7 +73,11 @@ Copy the **engine** skill (`.claude/skills/sagi/`) to build your own officer.
 `officers/savante/SKILL.md` is published to show what a filled-in officer looks
 like; it loads `.claude/agents/savante.md`, which lives in
 [cryptoAGI/savante](https://github.com/cryptoAGI/savante), and that repository
-wins if the two copies ever differ.
+wins if the two copies ever differ. The copy here is the canon's at `619c71a`
+(v0.0.5); its paths (`gfx/`, `PROOF.sha256`, `bind/`) are relative to the canon.
+Check it with `sha256sum officers/savante/SKILL.md`, which must print
+`4ddf8430c7a90a7eafbb6ac419dee34180645fa572e571103da28f1209c60735`, the value in
+the canon's `PROOF.sha256` and ledger.
 
 The bundle documents are specifications, not an implementation. The reference
 implementation is Savante's `bind/savante_bind.py` (writes the manifest) and
