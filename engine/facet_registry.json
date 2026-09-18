@@ -2,7 +2,7 @@
   "$comment": "The sAGI facet registry. Prose spec: FACET_BUNDLE.md, beside this file. Reserved extensions are owned by this spec version; a fork may add namespaced custom facets but may never redefine a core one.",
   "format": "sagi.facet_registry/1",
   "version": 1,
-  "updated": "2026-09-11",
+  "updated": "2026-09-14",
 
   "states": ["present", "null_with_reason", "absent"],
   "state_rule": "A facet that does not exist is `absent` with a reason in the manifest, or `null_with_reason` inside a file that exists. A plausible-looking value in place of an unmeasured one is a defect, not a placeholder.",
@@ -12,26 +12,26 @@
       "required": true,
       "media": "application/json",
       "spec": "mindX .persona v1",
-      "spec_url": "mindX/mindx/godel/mindxtrain/personas/README.md",
-      "validator": "python3 persona_project.py <stem> --check",
+      "spec_url": "mindX/mindx/godel/mindxtrain/personas/README.md (mindX-internal, not published; not required to verify a bundle)",
+      "validator": "python3 persona_project.py <stem> --check (mindX-internal, not published)",
       "role": "identity — the source of truth for every derived facet"
     },
     "agent": {
       "required": true,
       "media": "text/plain",
-      "spec": "CAPS spec; renderer mindX/agents/blockchain/facets.py:88",
+      "spec": "CAPS spec; renderer mindX/agents/blockchain/facets.py:88 (mindX-internal, not published)",
       "role": "the class facet: implementation, domain, capabilities, knowledge domains"
     },
     "model": {
       "required": true,
       "media": "application/yaml",
-      "spec": "mindX/agents/blockchain/template.model",
+      "spec": "mindX/agents/blockchain/template.model (mindX-internal, not published)",
       "role": "inference POLICY (logical model, task class, pinned true/false) — a policy, not weights"
     },
     "prompt": {
       "required": false,
       "media": "text/plain",
-      "spec": "YAML frontmatter + body; mindX/prompts/**/*.prompt",
+      "spec": "YAML frontmatter + body; examples in mindX/prompts/**/*.prompt (mindX-internal, not published)",
       "role": "the system prompt",
       "authority": "PER BUNDLE — declared in the file's own frontmatter, not fixed by this registry",
       "authority_values": {
@@ -71,20 +71,20 @@
       "required": false,
       "media": "text/markdown",
       "shape": "YAML frontmatter + markdown body",
-      "source": "named by mindX/faicey/FAICE.md; SHAPED 2026-09-12 by personas/luvai.attribute, whose own `defined` field records that no .attribute file existed beforehand",
+      "source": "named by mindX/faicey/FAICE.md (mindX-internal, not published); SHAPED 2026-09-12 by personas/luvai.attribute, whose own `defined` field records that no .attribute file existed beforehand",
       "role": "the traits a persona is built FROM — each one a claim carrying a value, a source, and a state",
       "authority": "SOURCE, not derived. Hand-authored; the place a trait is added or retired.",
       "row_states": ["measured", "asserted", "empty"],
       "rule": "An attribute with no source is a preference wearing a fact's clothes. `empty` is a legitimate state and is NEVER filled with a plausible guess — a null voiceprint is the truth about a voice that has not been cloned.",
-      "consumed_by": "ollywoo/wardrobe.js, which builds a persona and leaves traits[] empty (wardrobe.js:62); this facet fills it",
-      "instances": ["mindX personas/luvai.attribute"]
+      "consumed_by": "ollywoo/wardrobe.js (internal, not published; not required to verify a bundle), which builds a persona and leaves traits[] empty (wardrobe.js:62); this facet fills it",
+      "instances": ["https://github.com/cryptoAGI/luvai/blob/main/luvai.attribute (first authored in mindX personas/, mindX-internal)"]
     },
     "verse.xml": {
       "required": false,
       "media": "application/xml",
       "role": "the verse — lines that become the persona's voice_examples",
       "authority": "SOURCE",
-      "instances": ["mindX personas/luvai.verse.xml"],
+      "instances": ["https://github.com/cryptoAGI/luvai/blob/main/luvai.verse.xml (first authored in mindX personas/, mindX-internal)"],
       "note": "A compound extension. The registry matches on the full suffix `verse.xml`, not on `xml`."
     },
     "aiml": {
@@ -94,19 +94,19 @@
       "role": "model-free rendering — categories built from the persona's exchanges and task.battery",
       "authority": "DERIVED from .persona exchanges + task.battery",
       "why": "It lets a persona speak with NO MODEL AT ALL. That matters for an officer whose doctrine forbids model pinning: the floor is a deterministic renderer, not an inference call that may be unavailable, metered, or swapped underneath the charter.",
-      "instances": ["mindX personas/luvai.aiml"]
+      "instances": ["https://github.com/cryptoAGI/luvai/blob/main/luvai.aiml (first authored in mindX personas/, mindX-internal)"]
     },
     "reputation": {
       "required": false,
       "media": "application/json",
-      "source": "mindX/faicey/FAICE.md seven-facet set",
+      "source": "mindX/faicey/FAICE.md seven-facet set (mindX-internal, not published)",
       "role": "standing, earned rather than asserted"
     },
     "agency": {
       "required": false,
       "media": "text/markdown",
       "shape": "YAML frontmatter + markdown body",
-      "spec": "defined 2026-09-12 by mindX personas/jaimla.agency, whose own `defined` field records that no .agency file existed anywhere beforehand — so it defines the facet rather than following a convention",
+      "spec": "defined 2026-09-12 by mindX personas/jaimla.agency (mindX-internal; published copy https://github.com/cryptoAGI/jaimla/blob/main/jaimla.agency), whose own `defined` field records that no .agency file existed anywhere beforehand — so it defines the facet rather than following a convention",
       "frontmatter": ["version", "facet", "persona", "actor", "description", "defined", "granted_by", "read_by", "revocation"],
       "required_sections": ["may_decide", "may_do_with_a_witness", "must_defer", "bounds", "state"],
       "preamble": "one free-form leading section is permitted and varies by instance (jaimla.agency: 'The rule for this file'; luvai.agency: 'Why this agency is narrow')",
@@ -114,13 +114,13 @@
       "default": "deny — absence means not permitted, so a missing line is a refusal and never an oversight",
       "granted_by": "the operator, from outside the actor. An actor asking to widen its own agency is a request, not a change.",
       "read_by": ["iRECTO before staging a beat", "the factory before writing a facet", "any surface that would let the actor act rather than speak"],
-      "instances": ["mindX personas/jaimla.agency", "mindX personas/luvai.agency"],
+      "instances": ["https://github.com/cryptoAGI/jaimla/blob/main/jaimla.agency (first authored in mindX personas/, mindX-internal)", "https://github.com/cryptoAGI/luvai/blob/main/luvai.agency (first authored in mindX personas/, mindX-internal)"],
       "note": "Registered as core because two real instances already use the bare `.agency` extension, which the custom_rule below would otherwise make a HARD ERROR. The alternative — renaming them x-mindx.agency — would have punished correct files to protect a list. Consistency worth recording: jaimla.agency's must_defer names mint, list, bind and register as operator-signature acts, the same doctrine sAGI.tool encodes as enforced_by. Two facets authored independently, agreeing."
     }
   },
 
   "mint_outputs": {
-    "$comment": "Written by a mint pipeline as on-chain data lands (mindX/agents/blockchain/facets.py:14-16), never by an author. Registered as namespaced customs so no author-facet name is ever taken by pipeline output.",
+    "$comment": "Written by a mint pipeline as on-chain data lands (mindX/agents/blockchain/facets.py:14-16, mindX-internal, not published), never by an author. Registered as namespaced customs so no author-facet name is ever taken by pipeline output.",
     "x-mindx.walletpublickey": {"media": "text/plain", "written_by": "pipeline", "owner": "mindx"},
     "x-mindx.bankon": {"media": "application/json", "written_by": "pipeline", "owner": "mindx"},
     "x-mindx.inft": {"media": "application/json", "written_by": "pipeline", "owner": "mindx"}
@@ -130,5 +130,5 @@
   "custom_pattern": "^x-[a-z0-9]+\\.[a-z0-9_]+$",
   "custom_rule": "An extension outside `core` MUST match custom_pattern and MUST declare {owner, spec_url, media, added_in} in the bundle manifest. An unnamespaced unknown extension is a HARD ERROR, not a warning: it is the one rule that lets the core list grow later without ever colliding with a fork's private facet.",
 
-  "enumeration_note": "This core set is the union of two prior, disagreeing enumerations: six facets in mindX/agents/blockchain/facets.py:29 and seven in mindX/faicey/FAICE.md. walletpublickey/bankon/iNFT moved to mint_outputs because they are not authored."
+  "enumeration_note": "This core set is the union of two prior, disagreeing enumerations: six facets in mindX/agents/blockchain/facets.py:29 and seven in mindX/faicey/FAICE.md (both mindX-internal, not published; cited as provenance, not required to verify a bundle). walletpublickey/bankon/iNFT moved to mint_outputs because they are not authored."
 }

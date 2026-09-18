@@ -36,7 +36,8 @@ A `.faice` is not an image and it is not a model.
 }
 ```
 
-Reference implementation: `mindX/faicey/src/face_clone/faceprint.js`.
+Reference implementation: `mindX/faicey/src/face_clone/faceprint.js` (mindX-internal (private), not required to verify
+or to read this format).
 
 ## The twelve measures, in order
 
@@ -126,7 +127,7 @@ file. A `.faice` that claims a face should be asked which model drew it.
 ## Binding face and voice
 
 Where both a `.faice` and a `.voaice` are measured, they fuse into one **persona print**
-(`faicey/src/face_clone/persona.js`):
+(`faicey/src/face_clone/persona.js`, mindX-internal (private), not required to verify):
 
 ```
 payload = { v:1, kind:"persona", modalities, faceHash, voiceHash,

@@ -3,9 +3,11 @@ llm.txt — sAGI, the engine, explained to another machine
 You are reading the orientation file for github.com/cryptoAGI/sagi. Read it before you operate,
 extend, review or duplicate anything here. It is easy to misread this repository as a model, a
 framework or an agent. It is none of those. It is a DISCIPLINE written down as plain text: a charter
-format, a verdict contract and an invocation skill. Any frontier or local model that loads them
-becomes a read-only officer. If this file ever disagrees with engine/CHARTER_TEMPLATE.md or
-engine/VERDICT_CONTRACT.md, those files win.
+format, a verdict contract, an invocation skill, and a facet bundle format (the facet bundle, the THOT
+manifest, faice/1 and a JSON facet registry). Any frontier or local model that loads them
+becomes a read-only officer. If this file ever disagrees with engine/CHARTER_TEMPLATE.md,
+engine/VERDICT_CONTRACT.md, engine/FACET_BUNDLE.md, engine/THOT_MANIFEST.md, engine/FAICE_FORMAT.md
+or engine/facet_registry.json, those files win.
 
 WHAT sAGI IS
 
@@ -17,8 +19,11 @@ WHAT sAGI IS
   sAGI is not a bigger model. The intelligence is general; the discipline is what makes it sAGI. No
   model is pinned — a charter that fails on an engine swap was never a discipline.
 
-  Version: sAGI v0.0.1. The number is deliberately small and governed by the discipline itself: a
-  version is earned when something checkable says so, not when the work feels finished.
+  Version: the version line lives in the reference officer's skill, and reads sAGI v0.0.5 at savante
+  619c71a (2026-09-17); this file quoted it as v0.0.1 when it was written on 2026-09-14. The engine
+  documents here carry no separate release number. The number is deliberately small and governed by
+  the discipline itself: a version is earned when something checkable says so, not when the work
+  feels finished.
 
 THE THREE LAWS
 
@@ -36,6 +41,14 @@ THE FILES
                                  standing constraints. Fill those; change nothing else.
   engine/VERDICT_CONTRACT.md     the output specification: five fields, four verdicts, invariants,
                                  grep-stable machine consumption.
+  engine/FACET_BUNDLE.md         what an officer is made of: the core facets, the three states
+                                 (present / null_with_reason / absent), and the x- namespace rule
+                                 for custom facets.
+  engine/THOT_MANIFEST.md        how N facets become ONE content-addressed thing: thot: / CID /
+                                 contentRoot from one canonicalisation, the closed algorithms
+                                 vocabulary, the two roots, the 64-leaf Merkle tree, and lineage.
+  engine/FAICE_FORMAT.md         the faice/1 face-identity format, voaice's sibling.
+  engine/facet_registry.json     the facet registry itself, machine-readable.
   .claude/skills/sagi/SKILL.md   the ENGINE skill — officer-agnostic. It loads whatever charter the
                                  repository defines. Copy this one to build your own officer.
   officers/savante/SKILL.md      the REFERENCE OFFICER's skill — Savante's own /sagi skill, published
@@ -43,14 +56,44 @@ THE FILES
                                  Savante-specific: it names her canon, her governance and her mint
                                  status, and it loads .claude/agents/savante.md, a charter that lives
                                  in cryptoAGI/savante and not in this repository.
-  sAGI.md                        the full definition: the three laws, the doctrine, the reference
-                                 skill text.
+  sAGI.md                        the definition: the three laws, the doctrine, and an early text of
+                                 Savante's /sagi skill. It originates in cryptoAGI/savante, whose
+                                 copy is canonical. This mirror differs only where a path would not
+                                 resolve here, and while a correction is landing in both repositories
+                                 it may lead savante's copy by that correction (see its provenance
+                                 note).
   README.md                      the human front page.
   llm.txt                        this file.
+  LICENSE                        MIT.
+
+  engine/FACET_BUNDLE.md and engine/THOT_MANIFEST.md are specifications, not an implementation; nothing
+  in this repository executes. Their reference implementation is bind/savante_bind.py and
+  bind/savante_verify.py in cryptoAGI/savante. engine/FAICE_FORMAT.md's reference implementation is
+  faceprint.js in mindX (mindX-internal (private), not required to verify).
+
+  SUPERSEDED, 2026-09-17: savante now applies §3a rule 1 in full. Measured at savante main (619c71a),
+  savante_verify.py REJECTs with exit 2, before computing any digest, both a savante.thot.json whose
+  algorithms block has been removed (rule 1a) and one whose facet_digest reads blake3 (rule 1d); its
+  manifest declares exactly the ten keys the verifier implements, doctrine_root among them, and its
+  --self-test runs those refusals as cases. The 2026-09-14 text follows as the record: at savante main
+  (then 1fcca89) savante_verify.py recorded a missing algorithms block as unknown instead of refusing
+  it and compared only six keys, and savante.thot.json there had a non-null doctrine_root but no
+  algorithms.doctrine_root, so a verifier applying §3a as written refused it under rule 1(b).
+  jaimla_verify.py at jaimla main refused missing, unknown and mismatched keys (rules 1(b) to 1(d))
+  but not a missing block (1(a)); that reading has not been re-run since. Where an implementation and
+  the spec disagree, the spec wins.
 
   Canon for the reference officer is github.com/cryptoAGI/savante. The copy under officers/savante/
-  was taken from that repository's main branch at commit 5d53d86 (8,751 bytes). If the two ever
-  differ, the savante repository wins, and this copy is stale until refreshed.
+  was taken from that repository's main branch at commit 619c71a (sAGI v0.0.5, 10,325 bytes, sha256
+  b8b9b62db9bac8286171a5766fe23f0512987872d2cefc9598036b7609daff30 — the value in that repository's
+  PROOF.sha256 and in its ledger). Its paths (gfx/, PROOF.sha256, bind/) are relative to that
+  repository. If the two ever differ, the savante repository wins, and this copy is stale until
+  refreshed.
+
+  The reference officer's public office is huggingface.co/spaces/Gregory-L/Savante: a static page,
+  no server, no host key, the canon served as files. The page's own integrity() hashes what it serves
+  against savante.commitments.json and reported 9 agreeing, 0 disagreeing on 2026-09-17. A page that
+  agrees with a ledger is not a page that proves who wrote it.
 
 THE VERDICT CONTRACT — the API, and it is fixed
 
@@ -85,14 +128,20 @@ WHAT NOT TO DO
   DEFER. Never describe an officer as an NFT, a registered agent or an agent-for-hire: the reference
   officer is not minted, and its own binding document renders VERDICT: DEFER on minting.
 
-HONEST LABELS FOR THIS REPOSITORY, as of 2026-09-13
+HONEST LABELS FOR THIS REPOSITORY, as of 2026-09-14 (engine documents as added in 5530aaa)
 
   This repository is MIT licensed — the same LICENSE text, byte for byte, as the reference officer's:
   Copyright (c) 2026 cryptoAGI — Professor Codephreak.
-  The reference officer's published tree verifies: a fresh clone of cryptoAGI/savante at 3b5ddb5 makes
-  bind/savante_verify.py print VERDICT: APPROVE, exit 0. Earlier, at 5d53d86, it printed REJECT because
-  the skill changed after the last bind — drift, not tampering, closed by the re-bind in 3b5ddb5. That
-  APPROVE proves the binding of files to ledger, not who rendered any verdict, and nothing is on chain.
+  The reference officer's published tree verifies: on 2026-09-14 a fresh clone of cryptoAGI/savante
+  main (then 1fcca89; the commit moves with every re-bind, so re-run the check rather than trust this
+  line) made bind/savante_verify.py print VERDICT: APPROVE, exit 0. Earlier, at 5d53d86, it printed
+  REJECT because the skill changed after the last bind — drift, not tampering, closed by the re-bind
+  in 3b5ddb5. That APPROVE proves the binding of files to ledger, not who rendered any verdict, and
+  nothing is on chain. It is savante's own verifier's APPROVE, not an independent conformance
+  check against engine/THOT_MANIFEST.md. Re-run on 2026-09-17 at savante main (619c71a, sAGI v0.0.5,
+  generation 7): VERDICT: APPROVE with 26 of 26 checks KNOWN, --self-test 0 FAIL, and
+  sha256sum -c PROOF.sha256 passing for all 49 files. The §3a refusal recorded in the 2026-09-14
+  caveat no longer applies (see SUPERSEDED under THE FILES).
 
 Canon: github.com/cryptoAGI/sagi · reference officer: github.com/cryptoAGI/savante.
 Knowledge is what survives verification; nothing else counts.

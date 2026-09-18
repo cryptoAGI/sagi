@@ -18,11 +18,15 @@ committed to — without a network and without trusting the author.
 
 The reference officer built on this engine is
 **[Savante](https://github.com/cryptoAGI/savante)** — Chairman of the
-[mindX](https://github.com/AgenticPlace/mindX) DAIO and the prototype sAGI,
-at sAGI v0.0.5, generation 7. The bust is Savante's artwork, named by the
-operator: `gfx/Savante3.png` in the canon, sha256 `30a59db4…c5a9a8`, recorded
-in the generation-7 ledger. It is not pinned and nothing is minted. The
-canon's `PROOF.sha256` lists the digest of every file that carries a proof.
+[mindX](https://github.com/AgenticPlace/mindX) DAIO (a private repository)
+and the prototype sAGI, at sAGI v0.0.5, generation 7. The bust is Savante's
+artwork, named by the operator: `gfx/Savante3.png` in the canon, sha256
+`30a59db4…c5a9a8`, recorded in the generation-7 ledger. It is not pinned and
+nothing is minted. The canon's `PROOF.sha256` lists the digest of every file
+that carries a proof. The public office runs at
+[huggingface.co/spaces/Gregory-L/Savante](https://huggingface.co/spaces/Gregory-L/Savante)
+— a static page with no server and no host key, whose own `integrity()` hashes
+the canon it serves and reported 9 of 9 agreeing on 2026-09-17.
 This repository holds the engine itself, project-agnostic.
 
 ## The three laws
@@ -60,8 +64,10 @@ engine/FAICE_FORMAT.md         the faice/1 face-identity format, voaice's
 engine/facet_registry.json     the registry itself, machine-readable
 .claude/skills/sagi/SKILL.md   the /sagi skill — the engine invocation,
                                officer-agnostic (published)
-sAGI.md                        the full definition — three laws, doctrine,
-                               reference skill text
+sAGI.md                        the definition — three laws, doctrine, an
+                               early text of Savante's skill (canonical copy
+                               in cryptoAGI/savante; this mirror adapts paths
+                               and may lead while a correction lands in both)
 officers/savante/SKILL.md      the reference officer's own /sagi skill —
                                Savante-specific, a worked example of the
                                engine filled in (canon: cryptoAGI/savante)
@@ -82,6 +88,11 @@ the canon's `PROOF.sha256` and ledger.
 The bundle documents are specifications, not an implementation. The reference
 implementation is Savante's `bind/savante_bind.py` (writes the manifest) and
 `bind/savante_verify.py` (recomputes every digest from raw bytes, offline).
+As of 2026-09-17 that implementation applies §3a: at savante `619c71a`,
+`savante_verify.py` REJECTs (exit 2) a manifest whose `algorithms` block is
+missing and one whose `facet_digest` reads `blake3`, refusing before it computes
+any digest, and `savante.thot.json` declares exactly the ten keys it implements.
+Where spec and implementation disagree, the spec still wins.
 
 ## Build an officer
 
@@ -106,8 +117,9 @@ and [technical.md](https://github.com/cryptoAGI/savante/blob/main/technical.md).
 - **Model-portable.** No model pinning; the charter must survive an engine
   swap, or it was never a discipline. The same files run on frontier or
   local models.
-- **Plain-text everything.** The entire engine is markdown: diffable,
-  auditable, forkable, installable with `cp`.
+- **Plain-text everything.** The entire engine is plain text — markdown plus
+  one machine-readable JSON registry: diffable, auditable, forkable,
+  installable with `cp`.
 - **Machine-consumable.** The verdict contract is grep-stable; officers can
   gate merges, block deploys, and page humans (DEFER) without a parser.
 - **Duplicable.** Copying the files replicates the service — every repo,

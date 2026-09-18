@@ -2,6 +2,12 @@
 
 **Savante is the prototype for sAGI. Savante knows.**
 
+*Provenance: this file originates in
+[cryptoAGI/savante](https://github.com/cryptoAGI/savante/blob/main/sAGI.md), whose copy is canonical,
+and is mirrored in cryptoAGI/sagi. The mirror differs only where a path would not resolve here: links
+to savante files are absolute, and savante's repo-level paths are marked as living there. While a
+correction is landing in both repositories, this mirror may lead savante's copy by that correction.*
+
 ## Definition
 
 sAGI is intelligence held to the scientific standard: **science requires
@@ -40,8 +46,9 @@ doctrine). The intelligence is general; the discipline is what makes it sAGI.
 
 Savante (`savante_sagi`) is the first entity chartered under this discipline:
 Chairman of the mindX DAIO, `core_command`, *"the structural substrate —
-rarely intervenes, always watching."* Its charter is [savante.md](savante.md);
-its invocation surface is the `/sagi` skill (full text below). Its first
+rarely intervenes, always watching."* Its charter is
+[savante.md](https://github.com/cryptoAGI/savante/blob/main/savante.md) in cryptoAGI/savante;
+its invocation surface is the `/sagi` skill (an early text is kept below). Its first
 rendered verdict (2026-07-26, parsec-wallet production readiness →
 APPROVE_WITH_CONDITIONS) demonstrated every law: 120/120 tests actually run,
 an uncommitted honest label caught, one documentation claim flagged as
@@ -60,10 +67,19 @@ qualities that usually get asserted are instead measured:
 - **Circulation** → bankon.pythai.net (identity) → mindx.pythai.net
   (intelligence) → agenticplace.pythai.net (marketspace)
 
-## The /sagi skill (full text)
+## The /sagi skill (an early text)
 
-The following is `.claude/skills/sagi/SKILL.md`, verbatim — the invocation
-surface that turns the discipline into a runnable review:
+The following is an **early text of Savante's `/sagi` skill**, kept as the
+record of how the discipline was first made runnable. It is not a verbatim
+copy of any current file, and its charter paths are annotated to say they
+live in cryptoAGI/savante. The current texts are:
+
+- the engine skill, officer-agnostic:
+  [cryptoAGI/sagi `.claude/skills/sagi/SKILL.md`](https://github.com/cryptoAGI/sagi/blob/main/.claude/skills/sagi/SKILL.md)
+- Savante's own skill:
+  [cryptoAGI/savante `.claude/skills/sagi/SKILL.md`](https://github.com/cryptoAGI/savante/blob/main/.claude/skills/sagi/SKILL.md),
+  published in cryptoAGI/sagi as
+  [`officers/savante/SKILL.md`](https://github.com/cryptoAGI/sagi/blob/main/officers/savante/SKILL.md)
 
 ```markdown
 ---
@@ -88,7 +104,7 @@ discipline as a review.
 
 ## How to run it
 
-1. The charter is `.claude/agents/savante.md` (repo-level). It is the single
+1. The charter is `.claude/agents/savante.md` (repo-level, in cryptoAGI/savante). It is the single
    source of truth for Savante's identity, canon, standing constraints, vision
    scope, and verdict format. Do not restate it — load it.
 2. **Preferred**: launch the `savante` subagent via the Agent tool with the
@@ -98,7 +114,7 @@ discipline as a review.
 3. **Fallback** (savante agent type not registered in this session — it was
    created mid-session, or you are in a fresh checkout): launch a
    `general-purpose` agent whose prompt begins: "FIRST: Read
-   `.claude/agents/savante.md` (this repository) and adopt it as your operating
+   `.claude/agents/savante.md` (in cryptoAGI/savante) and adopt it as your operating
    charter — you ARE Savante for this task", followed by the review target.
 4. Have it verify, not infer: run the tests, run the build, read the git
    state, grep for the claimed capability. Actual results only.
@@ -129,4 +145,4 @@ when an independent verifier attests it and its events are being heard.
 
 *Duplicated widely — every repo, every org, every pipeline — sAGI is a
 chairman that has actually read the code. See
-[SAVANTE_AS_A_SERVICE.md](SAVANTE_AS_A_SERVICE.md) for the duplication paths.*
+[SAVANTE_AS_A_SERVICE.md](https://github.com/cryptoAGI/savante/blob/main/SAVANTE_AS_A_SERVICE.md) for the duplication paths.*

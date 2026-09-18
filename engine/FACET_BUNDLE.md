@@ -8,6 +8,15 @@ The reference implementation is `bind/savante_bind.py` and `bind/savante_verify.
 [savante](https://github.com/cryptoAGI/savante); the first bundle is `sAGI` (Savante). This spec is
 generic: nothing here names an officer.
 
+As of 2026-09-14 that reference implementation (savante main, 1fcca89) predates the closed
+algorithms refusal in `THOT_MANIFEST.md` §3a. Its verifier does not refuse a missing or incomplete
+`algorithms` block, and `savante.thot.json` lacks `algorithms.doctrine_root`, so §3a rule 1(b) refuses
+that manifest until savante re-binds. Where the implementation and this spec disagree, the spec wins.
+
+References of the form `mindX/…`, `facets.py` and `persona_project.py` name files in mindX
+(AgenticPlace/mindX, a private repository). They are **mindX-internal (private), not required to verify**: cited as
+provenance, and not required to validate or verify a bundle.
+
 ---
 
 ## 1. The shape
@@ -21,7 +30,7 @@ extension:
 ```
 
 The stem is the key. mindX keys its blockchain-agent class the same way
-(`agents/blockchain/facets.py:32-33`), so a bundle installs by copy and rename, and one officer never
+(`mindX/agents/blockchain/facets.py:32-33`, mindX-internal (private), not required to verify), so a bundle installs by copy and rename, and one officer never
 collides with another.
 
 A bundle is named and verified by its **THOT manifest** — see `THOT_MANIFEST.md`. The manifest is the
@@ -38,7 +47,7 @@ Every facet, and every measured field inside a facet, is in exactly one state:
 | `absent` | the facet does not exist | listed in the manifest's `absent[]` with a reason; never a stub |
 
 **A plausible-looking value in place of an unmeasured one is a defect, not a placeholder.** This is
-not a new rule; it is the house rule stated once for every facet. `voaice/FORMAT.md` puts it as
+not a new rule; it is the house rule stated once for every facet. [`voaice/FORMAT.md`](https://github.com/cryptoAGI/voaice/blob/main/FORMAT.md) puts it as
 *"Nulls mean nothing was measured"*, and an unmeasured voice ships `measured: null, vprint: null`
 rather than a synthesised number.
 
@@ -53,13 +62,13 @@ fork may add facets (§4) but may never redefine one of these.
 
 | Facet | Required | Format | What it is |
 |---|---|---|---|
-| `.persona` | **yes** | JSON, mindX `.persona v1` | identity: beliefs, desires, intentions, skills, safety, embodiment. The source of truth for everything derivable. Validator: `persona_project.py --check` |
-| `.agent` | **yes** | plain text, CAPS spec | the class facet: implementation, domain, capabilities, knowledge domains. Renderer: `facets.py:88` |
+| `.persona` | **yes** | JSON, mindX `.persona v1` | identity: beliefs, desires, intentions, skills, safety, embodiment. The source of truth for everything derivable. Validator: `persona_project.py --check` (mindX-internal (private), not required to verify) |
+| `.agent` | **yes** | plain text, CAPS spec | the class facet: implementation, domain, capabilities, knowledge domains. Renderer: `facets.py:88` (mindX-internal (private), not required to verify) |
 | `.model` | **yes** | YAML | the inference *policy* — logical model, task class, and whether it is pinned. A policy, not weights |
 | `.prompt` | no | text + YAML frontmatter | the system prompt. **Derived** where a charter exists (§5) |
 | `.tool` | no | JSON | the capability surface: tool allowlist, forbidden set, grant mask, and for each row **what enforces it** (§6) |
 | `.skill` | no | Markdown | the invocation surface — how a caller reaches the officer |
-| `.voaice` | no | JSON, `voaice/1` | voice identity. Spec: `~/voaice/FORMAT.md` |
+| `.voaice` | no | JSON, `voaice/1` | voice identity. Spec: [`voaice/FORMAT.md`](https://github.com/cryptoAGI/voaice/blob/main/FORMAT.md) |
 | `.faice` | no | JSON, `faice/1` | face identity. Spec: `FAICE_FORMAT.md`, beside this file |
 | `.attribute` | no | Markdown + YAML frontmatter | the traits a persona is built FROM — each a claim with a **value, a source, and a state** |
 | `.verse.xml` | no | XML | the verse; its lines become the persona's `voice_examples` |
@@ -86,7 +95,7 @@ already used the bare extension, which §4's namespace rule would have made a **
 correct files to protect a list would have been the wrong repair — the list was incomplete, not the
 files.
 
-Two enumerations existed before this spec and disagreed: six facets in
+Two enumerations existed before this spec and disagreed (both mindX-internal (private), not required to verify): six facets in
 `mindX/agents/blockchain/facets.py:29` (`agent, model, persona, walletpublickey, bankon, iNFT`) and
 seven in `mindX/faicey/FAICE.md` (`model, agent, prompt, persona, skill, attribute, reputation`). The
 core set above is their **union**, minus three that are not authored at all:
@@ -156,8 +165,8 @@ correct `luvai.prompt` to be wrong. Corrected once a second instance existed —
 Where a bundle uses source-authority prompts, the persona is **produced**, not written: `.prompt`
 supplies the body, `.attribute` supplies the traits, and `.persona` is generated from both. Authority
 runs one way only — *the prompt never gets edited to match the persona.* Documented at
-`mindX personas/README.md` §"which way authority runs"; first instances `luvai.prompt` and
-`luvai.attribute`.
+`mindX personas/README.md` §"which way authority runs" (mindX-internal (private), not required to verify); first instances
+`luvai.prompt` and `luvai.attribute`, published in [cryptoAGI/luvai](https://github.com/cryptoAGI/luvai).
 
 ## 6. `.tool` declares what enforces it
 
