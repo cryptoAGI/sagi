@@ -62,6 +62,10 @@ engine/FAICE_FORMAT.md         the faice/1 face-identity format, voaice's
                                sibling — twelve ordered ratios, and why an
                                unmeasured print is null rather than plausible
 engine/facet_registry.json     the registry itself, machine-readable
+engine/CARRIER_TEST.md         can this model carry an officer? form vs
+                               substance, the probe set, and measured
+                               carriers (first: Bonsai-8B 1-bit — form
+                               passes, substance fails, one trial)
 .claude/skills/sagi/SKILL.md   the /sagi skill — the engine invocation,
                                officer-agnostic (published)
 sAGI.md                        the definition — three laws, doctrine, an
@@ -116,7 +120,9 @@ and [technical.md](https://github.com/cryptoAGI/savante/blob/main/technical.md).
 
 - **Model-portable.** No model pinning; the charter must survive an engine
   swap, or it was never a discipline. The same files run on frontier or
-  local models.
+  local models — the *form* of the contract ports anywhere; whether a given
+  carrier keeps the *substance* is measured, not assumed
+  ([CARRIER_TEST.md](engine/CARRIER_TEST.md)).
 - **Plain-text everything.** The entire engine is plain text — markdown plus
   one machine-readable JSON registry: diffable, auditable, forkable,
   installable with `cp`.
