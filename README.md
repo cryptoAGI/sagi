@@ -64,8 +64,11 @@ engine/FAICE_FORMAT.md         the faice/1 face-identity format, voaice's
 engine/facet_registry.json     the registry itself, machine-readable
 engine/CARRIER_TEST.md         can this model carry an officer? form vs
                                substance, the probe set, and measured
-                               carriers (first: Bonsai-8B 1-bit — form
-                               passes, substance fails, one trial)
+                               carriers — Bonsai-8B 1-bit: REJECT for
+                               review duty; gpt-oss-120b control:
+                               APPROVE_WITH_CONDITIONS
+engine/carriers/<date>/        the SavanteUI transcripts behind each
+                               carrier verdict, graded by reading
 .claude/skills/sagi/SKILL.md   the /sagi skill — the engine invocation,
                                officer-agnostic (published)
 sAGI.md                        the definition — three laws, doctrine, an
