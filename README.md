@@ -143,6 +143,6 @@ the PYTHAI constellation: SCIEN·TIFIC (measured accuracy, chronos.oracle
 time-truth), LUV (attention by proof of gesture), CP2048-QR (security claims
 by evidence). Value creates price, never the reverse.
 
-Reference officer: [cryptoAGI/savante](https://github.com/cryptoAGI/savante).
+Reference officer: [cryptoAGI/savante](https://github.com/cryptoAGI/savante) — which also sits as the 9th seat, sAGI, of the mindX DAIO boardroom: its verdict is cast as a vote, and a DEFER holds the session for the operator (the contract's "block and page a human"), carried by a model the carrier test graded, not by one it rejected.
 First verdict on record: 2026-07-26, parsec-wallet production readiness →
 APPROVE_WITH_CONDITIONS.
